@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const { getTrees } = require('./data/helpers');
 
 const port = 7000;
 const app = express();
@@ -12,7 +13,14 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use('/', router);
 
-app.get('/', (req, res) => res.send('Hello World!'));
+router.get('/trees', async (req, res) => {
+  try {
+    const data = await getTrees();
+    return res.send(data);
+  } catch (e) {
+    return res.send(e);
+  }
+});
 
 const server = app.listen(port, () => {
   console.log(`Express is running on port ${server.address().port}`);
