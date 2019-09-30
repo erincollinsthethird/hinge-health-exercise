@@ -5,7 +5,7 @@ import './App.css';
 class App extends React.Component {
   state = {
     data: []
-  }
+  };
 
   componentDidMount() {
     this.getTrees();
