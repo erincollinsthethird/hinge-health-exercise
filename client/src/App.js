@@ -12,7 +12,7 @@ class App extends React.Component {
   }
 
   getTrees = () => {
-    fetch('http://localhost:7000/trees')
+    fetch('/trees')
       .then((data) => {
         return data.json();
       })
